@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/assests/todo-task-favicon .png"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Font-Awesome Library -->
+    <script
+      src="https://kit.fontawesome.com/6edf772ad0.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Moment Library  -->
+    <script src="https://momentjs.com/downloads/moment.js
+   "></script>
+
+    <script defer type="module" src="./js/script.js"></script>
+
+    <title>Todo Task</title>
+  </head>
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+      <section class="nav-container">
+        <div class="nav-header">
+          <h1 class="header-icon">TodoTask</h1>
+        </div>
+        <section class="nav-viewpoint">
+          <div class="task-count-container">
+            <i class="fa-solid fa-list-check"></i>
+            <p>Tasks</p>
+            <span class="task-count">55</span>
+          </div>
+        </section>
+
+        <footer>
+          <div class="color-switch-container">
+            <input type="checkbox" id="input-color-switch" />
+            <label for="input-color-switch" class="color-switch">
+              <div class="color-switch-toggle"></div>
+            </label>
+          </div>
+        </footer>
+      </section>
+    </nav>
+
+    <!-- Task Input -->
+    <menu class="task-field">
+      <h3 class="task-header">Task</h3>
+      <div class="task-input-container">
+        <div class="field-group">
+          <form class="input-form">
+            <input
+              type="text"
+              class="input-field"
+              name="text"
+              placeholder=" "
+            />
+            <label for="" class="input-label">Create Task</label>
+          </form>
+        </div>
+
+        <button class="add-btn"><i class="fa-duotone fa-plus"></i></button>
+      </div>
+    </menu>
+
+    <!-- Tasks List  -->
+    <main class="main-task">
+      <section class="task-container">
+        <ul class="task-list">
+          <li class="task-item">
+            <div class="task-item-container">
+              <div class="checkbox-container">
+                <div class="check-mark checked">
+                  <img src="/assets/icon-check.svg" alt="checkmark icon" />
+                </div>
+                <span class="task-item-title">New Item</span>
+              </div>
+              <button class="close-btn">x</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Task Description & Timestamp -->
+    <aside class="task-desc">
+      <div class="task-desc-container">
+        <p class="timestamp">
+          <span class="created"> Created:</span>
+          <span class="current-date"> Jan 26, 4:00pm</span>
+        </p>
+        <div class="task-desc-textarea">
+          <form class="textarea-form">
+            <textarea
+              name="details"
+              class="task-desc-textarea-input"
+              id=""
+              placeholder="Task Description"
+            ></textarea>
+          </form>
+        </div>
+      </div>
+    </aside>
+  </body>
+</html>
