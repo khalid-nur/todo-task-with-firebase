@@ -12,6 +12,7 @@ import {
   orderBy,
   serverTimestamp,
   updateDoc,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 
 // Init firebase
@@ -29,6 +30,7 @@ const queryRef = query(colRef, orderBy("createdAt", "desc"));
 // Elements
 const textInputEl = document.querySelector(".input-form");
 const taskListEl = document.querySelector(".task-list");
+const taskCountEl = document.querySelector(".task-count");
 // Add Task
 const addTask = function () {
   textInputEl.addEventListener("submit", function (e) {
@@ -77,11 +79,11 @@ const generateTasks = function (taskItems) {
           <div class="check-mark ${
             taskItem.status === "completed" ? "checked" : ""
           } "data-id="${taskItem.id}" >
-            <img src="/assets/icon-check.svg" alt="checkmark icon" />
+            <img src="/assets/icon-check.svg" alt="check mark icon" />
           </div>
           <span class="task-item-title">${taskItem.task}</span>
         </div>
-        <button class="close-btn">x</button>
+        <button class="close-btn "data-id="${taskItem.id}"">x</button>
       </div>
   </li>
     
@@ -89,6 +91,7 @@ const generateTasks = function (taskItems) {
   });
   taskListEl.innerHTML = taskItemsHTML;
   createEventListeners();
+  taskCount(taskItems);
 };
 
 // Event Handlers
@@ -98,6 +101,14 @@ const createEventListeners = function () {
   checkMarks.forEach((checkMark) => {
     checkMark.addEventListener("click", function () {
       checkMarkComplete(checkMark.dataset.id);
+    });
+  });
+
+  // Delete a task
+  const deleteBtns = document.querySelectorAll(".close-btn");
+  deleteBtns.forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", function () {
+      deleteTask(deleteBtn.dataset.id);
     });
   });
 };
@@ -120,6 +131,18 @@ const checkMarkComplete = function (checkMarkId) {
       });
     }
   });
+};
+
+// Delete a specific task
+const deleteTask = function (deleteBtnId) {
+  const docRef = doc(db, "tasks", deleteBtnId);
+  deleteDoc(docRef);
+};
+
+// Display count of tasks
+const taskCount = function (taskItems) {
+  const taskCountEl = document.querySelector(".task-count");
+  taskCountEl.innerHTML = taskItems.length;
 };
 
 // Invalid submission
