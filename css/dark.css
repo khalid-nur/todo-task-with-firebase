@@ -19,12 +19,13 @@ body {
   grid-template-columns: 150px 1fr 450px;
   grid-template-rows: 50px 1fr;
   overflow-x: hidden;
+  background-color: #353a3f;
 }
 
 /* Navigation Menu  */
 .main-nav {
   grid-row: 1/-1;
-  background-color: #4c5565;
+  background-color: #25292c;
 }
 
 .nav-container {
@@ -81,7 +82,7 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   grid-column: 2/3;
-  background-color: #f1f4f8;
+  background-color: #353a3f;
   border-bottom: 0.5px solid #5d6165;
   border-right: 0.5px solid #5d6165;
 }
@@ -106,6 +107,7 @@ body {
   outline: none;
   border: none;
   border-bottom: 2px solid #4c5565;
+  color: #ebebec;
   padding-top: 5px;
   padding-left: 3px;
   background: transparent;
@@ -119,6 +121,7 @@ body {
   padding-left: 3px;
   pointer-events: none;
   font-size: 1.2rem;
+  color: #ebebec;
   transition: 0.3s ease;
 }
 
@@ -159,7 +162,7 @@ body {
 .main-task {
   grid-column: 2/3;
   padding: 20px;
-  background-color: #f9fafc;
+  background-color: #353a3f;
   border-right: 0.5px solid #5d6165;
 }
 
@@ -173,14 +176,14 @@ body {
 
 .task-item {
   padding: 10px 15px;
-  background-color: #fff;
-  border: 1px solid #ebeff6;
+  background-color: #494e52;
+  border: 1px solid #5d6165;
   border-radius: 3px;
   cursor: pointer;
 }
 
 .task-item-title {
-  color: #717171;
+  color: #ebebec;
 }
 
 .task-item-title.checked {
@@ -210,7 +213,7 @@ body {
   text-shadow: 0 1px 0 #fff;
   border: none;
   background: transparent;
-  color: #000;
+  color: #fff;
   cursor: pointer;
   opacity: 0.5;
   display: none;
@@ -262,12 +265,14 @@ body {
 .task-desc {
   grid-column: 3/4;
   grid-row: 1/-1;
+  background-color: #353a3f;
 }
 
 .task-desc-container {
   display: flex;
   flex-direction: column;
   display: none;
+  background-color: #353a3f;
 }
 
 .timestamp {
@@ -277,6 +282,7 @@ body {
   height: 50px;
   align-items: center;
   padding: 15px;
+  background-color: #353a3f;
 }
 
 .created {
@@ -285,12 +291,12 @@ body {
 }
 
 .current-date {
-  color: #717171;
+  color: #ebebec;
   padding-left: 5px;
 }
 
 .task-desc-textarea {
-  background-color: #f9fafc;
+  background-color: #494e52;
   border-bottom: 0.5px solid #5d6165;
 }
 
@@ -298,11 +304,16 @@ body {
   width: 100%;
   height: 115px;
   border: none;
-  background-color: #f9fafc;
+  background-color: #494e52;
+  color: #ffffff;
   padding: 10px 5px;
   outline: none;
   font-size: 1.2rem;
   font-family: Open Sans;
+}
+
+.task-desc-textarea-input::placeholder {
+  color: #fff;
 }
 
 .open {
@@ -314,7 +325,6 @@ body {
 }
 
 /* Dark Mode */
-
 #input-color-switch {
   position: absolute;
   right: 10px;
@@ -432,6 +442,18 @@ body {
 
   .main-task {
     border: none;
+  }
+
+  .close-btn {
+    color: #fff;
+  }
+
+  .close-btn:hover {
+    color: #fff;
+  }
+
+  .timestamp {
+    border-top: 0.5px solid #5d6165;
   }
 }
 

@@ -33,6 +33,7 @@ const taskListEl = document.querySelector(".task-list");
 const taskCountEl = document.querySelector(".task-count");
 const taskDescEl = document.querySelector(".task-desc");
 const colorSwitch = document.querySelector("#input-color-switch");
+const addTaskBtn = document.querySelector(".add-btn");
 
 // Add Task
 const addTask = function () {
@@ -43,11 +44,17 @@ const addTask = function () {
 
     textInputEl.text.value = "";
   });
+
+  addTaskBtn.addEventListener("click", function () {
+    formValidation();
+
+    textInputEl.text.value = "";
+  });
 };
 
 // Validate user input
 const formValidation = function () {
-  !textInputEl.text.value
+  !textInputEl.text.value.trim()
     ? displayEmptyFieldsMessage()
     : addDoc(colRef, {
         task: textInputEl.text.value,
@@ -251,6 +258,20 @@ const taskCount = function (taskItems) {
 const displayEmptyFieldsMessage = function () {
   console.log("no user input");
 };
+
+// Dark Mode
+const htmlHeadEl = document.head;
+const stylesheet = document.createElement("link");
+stylesheet.rel = "stylesheet";
+stylesheet.href = "/css/dark.css";
+
+const checkMode = function () {
+  colorSwitch.checked === true
+    ? htmlHeadEl.appendChild(stylesheet)
+    : htmlHeadEl.removeChild(stylesheet);
+};
+
+colorSwitch.addEventListener("click", checkMode);
 
 addTask();
 getTasks();
