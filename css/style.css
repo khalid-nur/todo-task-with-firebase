@@ -134,6 +134,25 @@ body {
   border-bottom: 2px solid #92cf5c;
 }
 
+/* Invalid input field */
+.invalid {
+  animation: shake 300ms;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(10px);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+}
+
 .add-btn {
   width: 30px;
   height: 30px;

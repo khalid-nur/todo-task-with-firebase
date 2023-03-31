@@ -41,13 +41,11 @@ const addTask = function () {
     e.preventDefault();
 
     formValidation();
-
     textInputEl.text.value = "";
   });
 
   addTaskBtn.addEventListener("click", function () {
     formValidation();
-
     textInputEl.text.value = "";
   });
 };
@@ -55,7 +53,7 @@ const addTask = function () {
 // Validate user input
 const formValidation = function () {
   !textInputEl.text.value.trim()
-    ? displayEmptyFieldsMessage()
+    ? alertEmptyInput()
     : addDoc(colRef, {
         task: textInputEl.text.value,
         description: "",
@@ -79,7 +77,6 @@ const getTasks = function () {
 
 // Display list of tasks
 const generateTasks = function (taskItems) {
-  console.log(taskItems);
   let taskItemsHTML = "";
 
   taskItems.forEach((taskItem) => {
@@ -149,7 +146,6 @@ const createEventListeners = function () {
 
   // Toggle the delete button
   const taskListItemEls = document.querySelectorAll(".task-item");
-  // console.log(taskListItemEls);
   taskListItemEls.forEach((taskListItemEl) => {
     const taskCloseBtns = taskListItemEl.querySelector(".close-btn");
     taskListItemEl.addEventListener("mouseover", function (e) {
@@ -164,7 +160,6 @@ const createEventListeners = function () {
   // Display a specific task description
   taskListItemEls.forEach((currentTaskListItemEl) => {
     currentTaskListItemEl.addEventListener("click", function () {
-      console.log("clicked");
       taskListItemEls.forEach((otherTaskListItemEl) => {
         if (
           otherTaskListItemEl.dataset.id !== currentTaskListItemEl.dataset.id
@@ -208,7 +203,6 @@ const checkMarkComplete = function (checkMarkId) {
 
   getDoc(docRefs).then((doc) => {
     const checkMarkStatus = doc.data().status;
-    console.log(checkMarkStatus);
 
     if (checkMarkStatus === "active") {
       updateDoc(docRefs, {
@@ -225,7 +219,6 @@ const checkMarkComplete = function (checkMarkId) {
 // Open specific task description
 const openTaskDescription = function (TaskListItemsID) {
   const docRefs = doc(db, "tasks", TaskListItemsID);
-  console.log(TaskListItemsID);
   getDoc(docRefs)
     .then((doc) => {
       if (doc.data().open === true) {
@@ -255,8 +248,12 @@ const taskCount = function (taskItems) {
 };
 
 // Invalid submission
-const displayEmptyFieldsMessage = function () {
-  console.log("no user input");
+const alertEmptyInput = function () {
+  const inputFieldEl = document.querySelector(".input-field");
+  inputFieldEl.classList.add("invalid");
+  setTimeout(() => {
+    inputFieldEl.classList.remove("invalid");
+  }, 500);
 };
 
 // Dark Mode
