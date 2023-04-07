@@ -4,7 +4,7 @@ Todo Task is a task management website that's designed to help organize and prio
 
 ## Demo
 
-[Live Demo Link](https://todotask-list.netlify.app/)
+<a href="https://todotask-list.netlify.app/" target="_blank">Live Demo</a>
 
 ![Live Demo](assets/todotask.png)
 ![Live Demo](assets/todotask-darkmode.png)
